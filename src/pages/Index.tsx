@@ -8,81 +8,42 @@ const CAMP_IMG = "https://cdn.poehali.dev/projects/92edbc88-5c7d-4493-8bfa-6eff3
 const routes = [
   {
     id: 1,
-    title: "Большое Алтайское кольцо",
-    days: 10,
-    price: 89000,
-    difficulty: "medium",
-    difficultyLabel: "Средний",
-    season: "Июнь — Сентябрь",
-    desc: "Классический маршрут через Чуйский тракт, плато Укок, Телецкое озеро и долину Катуни. Охватывает все главные жемчужины Алтая.",
-    highlights: ["Чуйский тракт", "Плато Укок", "Телецкое озеро"],
-    img: HERO_IMG,
-    group: "2–10 чел",
-  },
-  {
-    id: 2,
-    title: "Экспедиция на Белуху",
-    days: 8,
-    price: 74000,
-    difficulty: "hard",
-    difficultyLabel: "Сложный",
-    season: "Июль — Август",
-    desc: "Маршрут к подножию высочайшей вершины Сибири. Аккемское озеро, ледники, альпийские луга и незабываемые рассветы.",
-    highlights: ["Гора Белуха", "Аккемское озеро", "Ледник Аккем"],
-    img: HIKE_IMG,
-    group: "2–8 чел",
-  },
-  {
-    id: 3,
-    title: "Семейный Алтай",
-    days: 6,
-    price: 52000,
-    difficulty: "easy",
-    difficultyLabel: "Лёгкий",
-    season: "Май — Октябрь",
-    desc: "Комфортный маршрут для всей семьи. Катунь, Чемальская ГЭС, горные водопады, юрточный лагерь и конные прогулки.",
-    highlights: ["Река Катунь", "Чемал", "Юртовый лагерь"],
-    img: CAMP_IMG,
-    group: "2–12 чел",
-  },
-  {
-    id: 4,
-    title: "Монгольский перевал",
-    days: 12,
-    price: 105000,
-    difficulty: "hard",
-    difficultyLabel: "Сложный",
-    season: "Июль — Август",
-    desc: "Уникальный трансграничный маршрут через горный Алтай в Монголию. Плато Укок, петроглифы, каменные изваяния и степные просторы.",
-    highlights: ["Плато Укок", "Граница Монголии", "Петроглифы"],
-    img: HERO_IMG,
-    group: "4–8 чел",
-  },
-  {
-    id: 5,
-    title: "Дикие перевалы",
-    days: 9,
-    price: 79000,
-    difficulty: "medium",
-    difficultyLabel: "Средний",
-    season: "Июнь — Сентябрь",
-    desc: "Перевалы Кату-Ярык, Чике-Таман, долина Чулышмана. Захватывающие серпантины, водопады и дикие берега голубых озёр.",
-    highlights: ["Перевал Кату-Ярык", "Долина Чулышмана", "Чике-Таман"],
-    img: HIKE_IMG,
-    group: "2–10 чел",
-  },
-  {
-    id: 6,
-    title: "Золотая осень",
+    title: "Золотое кольцо Алтая",
     days: 7,
-    price: 63000,
-    difficulty: "easy",
-    difficultyLabel: "Лёгкий",
-    season: "Сентябрь — Октябрь",
-    desc: "Алтай в золотом убранстве — особый сезон. Багряные леса, первый снег на вершинах, безлюдные маршруты и чистейший воздух.",
-    highlights: ["Осенний лес", "Телецкое озеро", "Перевал Семинский"],
-    img: CAMP_IMG,
-    group: "2–10 чел",
+    price: 180000,
+    difficulty: "medium",
+    difficultyLabel: "Средний",
+    season: "Июнь — Сентябрь",
+    desc: "Большое кольцо по главным жемчужинам Горного Алтая: Чемал, Чуйский тракт, плато Укок, Телецкое озеро. Старт и финиш — Горно-Алтайск.",
+    highlights: ["Чуйский тракт", "Плато Укок", "Телецкое озеро", "Перевал Кату-Ярык"],
+    img: HERO_IMG,
+    group: "до 7 чел",
+    fullRoute: [
+      "Горно-Алтайск (аэропорт)",
+      "Чемальский тракт + Чемал",
+      "Семинский перевал",
+      "Перевал Чике-Таман",
+      "Белый Бом, мост Цаплина (Иня)",
+      "Яломанские бомы, слияние Чуи и Катуни",
+      "Акташ — Гейзерное озеро",
+      "Курайская степь — Чуйские Марсы",
+      "Северо-Чуйский хребет — Ак-Тру",
+      "Природный парк Мажой и Уч-Энмек",
+      "Алтайские Марсы, урочище Ак-Кёль",
+      "Софийский ледник, Беляши, Джазатор",
+      "Чуйская степь — Кош-Агач",
+      "Плато Укок",
+      "Перевал Кату-Ярык, Каменные грибы",
+      "Водопад Куркуре",
+      "Озеро Телецкое — паром/катер",
+      "Артыбаш — финиш в Горно-Алтайске",
+    ],
+    included: [
+      "Проживание в домиках с удобствами",
+      "Питание: завтрак и ужин",
+      "Трансфер на всём маршруте",
+      "Гид-водитель на весь тур",
+    ],
   },
 ];
 
@@ -135,6 +96,7 @@ const Index = () => {
   const [participants, setParticipants] = useState(2);
   const [bookingDate, setBookingDate] = useState("");
   const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [routeModal, setRouteModal] = useState<typeof routes[0] | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useScrollAnimation();
@@ -263,7 +225,7 @@ const Index = () => {
           </div>
 
           <div className="flex gap-10 mt-14 animate-fade-up opacity-0-init delay-700">
-            {[["150+", "туристов за сезон"], ["6", "уникальных маршрутов"], ["7", "лет на Алтае"]].map(([num, label]) => (
+            {[["150+", "туристов за сезон"], ["1", "флагманский маршрут"], ["7", "лет на Алтае"]].map(([num, label]) => (
               <div key={label}>
                 <div className="font-display text-3xl font-bold" style={{ color: "var(--gold)" }}>{num}</div>
                 <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{label}</div>
@@ -287,49 +249,74 @@ const Index = () => {
             <span className="text-xs tracking-widest uppercase" style={{ color: "var(--gold)" }}>Наши маршруты</span>
             <h2 className="font-display text-5xl sm:text-6xl font-bold mt-3 mb-4">Выбери своё приключение</h2>
             <p className="max-w-xl mx-auto" style={{ color: "var(--text-muted)" }}>
-              6 авторских маршрутов разной сложности — для одиночек, пар и семей с детьми
+              Авторский маршрут «Золотое кольцо Алтая» — 18 точек, 7 дней, группа до 7 человек
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {routes.map((r, i) => (
               <div key={r.id}
-                className={`card-hover rounded-2xl overflow-hidden scroll-reveal opacity-0-init cursor-pointer`}
-                style={{
-                  background: "var(--dark-card)",
-                  border: "1px solid var(--dark-border)",
-                  animationDelay: `${(i % 3) * 0.1}s`
-                }}
-                onClick={() => openBooking(r.title)}>
-                <div className="relative h-52 overflow-hidden">
-                  <img src={r.img} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,25,21,0.9) 0%, transparent 60%)" }} />
-                  <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${r.difficulty === "easy" ? "badge-easy" : r.difficulty === "medium" ? "badge-medium" : "badge-hard"}`}>
-                    {r.difficultyLabel}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl font-bold mb-2">{r.title}</h3>
-                  <p className="text-sm mb-4 leading-relaxed" style={{ color: "var(--text-muted)" }}>{r.desc}</p>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {r.highlights.map((h) => (
-                      <span key={h} className="text-xs px-2 py-1 rounded-md"
-                        style={{ background: "rgba(201,168,76,0.08)", color: "var(--gold)", border: "1px solid rgba(201,168,76,0.15)" }}>
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="divider-gold mb-5" />
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-4 text-xs" style={{ color: "var(--text-muted)" }}>
-                      <span className="flex items-center gap-1"><Icon name="Clock" size={13} /> {r.days} дней</span>
-                      <span className="flex items-center gap-1"><Icon name="Users" size={13} /> {r.group}</span>
+                className="card-hover rounded-2xl overflow-hidden scroll-reveal opacity-0-init col-span-1 md:col-span-2 xl:col-span-3"
+                style={{ background: "var(--dark-card)", border: "1px solid var(--dark-border)", animationDelay: `${i * 0.1}s` }}>
+                <div className="grid lg:grid-cols-2">
+                  <div className="relative h-72 lg:h-auto overflow-hidden">
+                    <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,25,21,0.8) 0%, transparent 50%)" }} />
+                    <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${r.difficulty === "easy" ? "badge-easy" : r.difficulty === "medium" ? "badge-medium" : "badge-hard"}`}>
+                      {r.difficultyLabel}
+                    </span>
+                    <div className="absolute bottom-4 left-4 flex gap-3 text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>
+                      <span className="flex items-center gap-1"><Icon name="Clock" size={12} /> {r.days} дней</span>
+                      <span className="flex items-center gap-1"><Icon name="Users" size={12} /> {r.group}</span>
+                      <span className="flex items-center gap-1"><Icon name="Sun" size={12} /> {r.season}</span>
                     </div>
-                    <div className="text-right">
-                      <div className="font-display text-2xl font-bold" style={{ color: "var(--gold)" }}>
-                        {r.price.toLocaleString("ru")} ₽
+                  </div>
+                  <div className="p-8 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-display text-3xl font-bold mb-3">{r.title}</h3>
+                      <p className="text-sm mb-5 leading-relaxed" style={{ color: "var(--text-muted)" }}>{r.desc}</p>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {r.highlights.map((h) => (
+                          <span key={h} className="text-xs px-2 py-1 rounded-md"
+                            style={{ background: "rgba(201,168,76,0.08)", color: "var(--gold)", border: "1px solid rgba(201,168,76,0.15)" }}>
+                            {h}
+                          </span>
+                        ))}
                       </div>
-                      <div className="text-xs" style={{ color: "var(--text-muted)" }}>с человека</div>
+                      <div className="space-y-2 mb-6">
+                        {r.included.map((inc) => (
+                          <div key={inc} className="flex items-center gap-2 text-sm">
+                            <Icon name="Check" size={14} style={{ color: "var(--gold)", flexShrink: 0 }} />
+                            <span style={{ color: "var(--text-muted)" }}>{inc}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="divider-gold mb-5" />
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <div className="font-display text-4xl font-bold" style={{ color: "var(--gold)" }}>
+                            {r.price.toLocaleString("ru")} ₽
+                          </div>
+                          <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>с человека за тур</div>
+                        </div>
+                        <div className="text-right text-xs" style={{ color: "var(--text-muted)" }}>
+                          Группа {r.group}
+                        </div>
+                      </div>
+                      <div className="flex gap-3">
+                        <button onClick={() => setRouteModal(r)}
+                          className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02]"
+                          style={{ border: "1px solid rgba(201,168,76,0.4)", color: "var(--gold)", background: "transparent" }}>
+                          Весь маршрут
+                        </button>
+                        <button onClick={() => openBooking(r.title)}
+                          className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02]"
+                          style={{ background: "var(--gold)", color: "var(--dark-bg)" }}>
+                          Забронировать
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -553,6 +540,94 @@ const Index = () => {
         </div>
       </footer>
 
+      {/* ROUTE DETAIL MODAL */}
+      {routeModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(10px)" }}
+          onClick={(e) => { if (e.target === e.currentTarget) setRouteModal(null); }}>
+          <div className="w-full max-w-2xl rounded-3xl animate-scale-in overflow-hidden"
+            style={{ background: "var(--dark-card)", border: "1px solid var(--dark-border)", maxHeight: "90vh", overflowY: "auto" }}>
+            <div className="relative h-56">
+              <img src={routeModal.img} alt={routeModal.title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,25,21,1) 0%, rgba(28,25,21,0.3) 100%)" }} />
+              <button onClick={() => setRouteModal(null)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center"
+                style={{ background: "rgba(0,0,0,0.5)", color: "white" }}>
+                <Icon name="X" size={18} />
+              </button>
+              <div className="absolute bottom-5 left-6">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block ${routeModal.difficulty === "easy" ? "badge-easy" : routeModal.difficulty === "medium" ? "badge-medium" : "badge-hard"}`}>
+                  {routeModal.difficultyLabel}
+                </span>
+                <h2 className="font-display text-3xl font-bold">{routeModal.title}</h2>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <div className="flex gap-6 mb-6 text-sm">
+                <span className="flex items-center gap-1.5" style={{ color: "var(--text-muted)" }}>
+                  <Icon name="Clock" size={14} style={{ color: "var(--gold)" }} /> {routeModal.days} дней
+                </span>
+                <span className="flex items-center gap-1.5" style={{ color: "var(--text-muted)" }}>
+                  <Icon name="Users" size={14} style={{ color: "var(--gold)" }} /> {routeModal.group}
+                </span>
+                <span className="flex items-center gap-1.5" style={{ color: "var(--text-muted)" }}>
+                  <Icon name="Sun" size={14} style={{ color: "var(--gold)" }} /> {routeModal.season}
+                </span>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="MapPin" size={16} style={{ color: "var(--gold)" }} /> Маршрут по точкам
+                </h3>
+                <div className="relative pl-5">
+                  <div className="absolute left-1.5 top-2 bottom-2 w-px" style={{ background: "var(--dark-border)" }} />
+                  {routeModal.fullRoute.map((point, idx) => (
+                    <div key={idx} className="relative flex items-start gap-3 mb-3">
+                      <div className="absolute -left-4 top-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ background: idx === 0 || idx === routeModal.fullRoute.length - 1 ? "var(--gold)" : "var(--dark-border)", border: "2px solid var(--gold)", zIndex: 1 }} />
+                      <span className="text-xs mr-1 font-mono" style={{ color: "var(--text-muted)", minWidth: "1.2rem" }}>{idx + 1}.</span>
+                      <span className="text-sm leading-snug" style={{ color: idx === 0 || idx === routeModal.fullRoute.length - 1 ? "var(--text-primary)" : "var(--text-muted)" }}>
+                        {point}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="Package" size={16} style={{ color: "var(--gold)" }} /> Что включено
+                </h3>
+                <div className="grid grid-cols-1 gap-2">
+                  {routeModal.included.map((inc) => (
+                    <div key={inc} className="flex items-center gap-2 text-sm">
+                      <Icon name="CheckCircle" size={14} style={{ color: "var(--gold)", flexShrink: 0 }} />
+                      <span style={{ color: "var(--text-muted)" }}>{inc}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="divider-gold mb-5" />
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="font-display text-3xl font-bold" style={{ color: "var(--gold)" }}>
+                    {routeModal.price.toLocaleString("ru")} ₽
+                  </div>
+                  <div className="text-xs" style={{ color: "var(--text-muted)" }}>с человека за тур</div>
+                </div>
+              </div>
+              <button onClick={() => { setRouteModal(null); openBooking(routeModal.title); }}
+                className="w-full py-4 rounded-xl font-semibold transition-all hover:scale-[1.02]"
+                style={{ background: "var(--gold)", color: "var(--dark-bg)" }}>
+                Забронировать этот тур
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* BOOKING MODAL */}
       {bookingOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4"
@@ -630,12 +705,12 @@ const Index = () => {
 
                 {selectedTour && (
                   <div className="p-4 rounded-xl" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)" }}>
-                    <div className="text-xs mb-1" style={{ color: "var(--text-muted)" }}>Ориентировочная стоимость</div>
+                    <div className="text-xs mb-1" style={{ color: "var(--text-muted)" }}>Стоимость тура</div>
                     <div className="font-display text-2xl font-bold" style={{ color: "var(--gold)" }}>
-                      {((routes.find((r) => r.title === selectedTour)?.price || 0) * participants).toLocaleString("ru")} ₽
+                      {(routes.find((r) => r.title === selectedTour)?.price || 0).toLocaleString("ru")} ₽
                     </div>
                     <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
-                      {(routes.find((r) => r.title === selectedTour)?.price || 0).toLocaleString("ru")} ₽ × {participants} чел.
+                      с человека · {participants} чел. = {((routes.find((r) => r.title === selectedTour)?.price || 0) * participants).toLocaleString("ru")} ₽ итого
                     </div>
                   </div>
                 )}
